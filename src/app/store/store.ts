@@ -1,5 +1,13 @@
 import { Action } from '@ngrx/store';
+ 
+ export interface StoreInterface {
+    counter:Counter
+}
 
+interface Counter
+{
+    n:number
+}
 let initalState = {
     n:0
 }
@@ -10,7 +18,7 @@ export function counterReducer (state = initalState , action: Action) {
               return {
                    n:state.n+1
               }
-        case ' dicreament' :
+        case 'dicreament' :
             return {
                 n:state.n-1
             }
