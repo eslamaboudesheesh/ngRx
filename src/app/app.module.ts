@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './store/store';
+import { counterReducer } from './store/reducers/counter.reducer';
 
 @NgModule({
   declarations: [
