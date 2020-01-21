@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { StoreInterface } from './store/store';
 import { IncreamentActions, decreamentActions } from './store/actions/counter.action';
+import { nSelector } from './store/reducers/counter.reducer';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +10,16 @@ import { IncreamentActions, decreamentActions } from './store/actions/counter.ac
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  count = 0;
-  constructor (private store:Store<StoreInterface>){
- this.store.subscribe(data => this.count = data.counter.n );
+  count:number = 0;
+  constructor(private store: Store<StoreInterface>) {
+    this.store.select(nSelector).subscribe(data => this.count = data);
+
   }
 
-  increase(){
+  increase() {
     this.store.dispatch(new IncreamentActions(1));
   }
-  decrease(){
+  decrease() {
     this.store.dispatch(new decreamentActions(2));
   }
 }

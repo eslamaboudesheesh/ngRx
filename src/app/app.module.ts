@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './store/reducers/counter.reducer';
+import { redusers } from './store/store';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import { counterReducer } from './store/reducers/counter.reducer';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({counter:counterReducer})
+    StoreModule.forRoot(redusers) // name for reducer and my reducer 
   ],
   providers: [],
   bootstrap: [AppComponent]
