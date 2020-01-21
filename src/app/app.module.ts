@@ -7,13 +7,17 @@ import { counterReducer } from './store/reducers/counter.reducer';
 import { redusers } from './store/store';
 import {EffectsModule} from '@ngrx/effects';
 import { TodosEffect } from './store/effects/todo.effect';
- @NgModule({
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+  @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    StoreDevtoolsModule.instrument({
+      maxAge : 10
+    }),
     StoreModule.forRoot(redusers) ,// name for reducer and my reducer 
     EffectsModule.forRoot([TodosEffect])
   ],
