@@ -19,7 +19,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       maxAge : 10
     }),
     StoreModule.forRoot(redusers) ,// name for reducer and my reducer 
-    EffectsModule.forRoot([TodosEffect])
+    EffectsModule.forRoot([TodosEffect ])
   ],
   providers: [],
   bootstrap: [AppComponent]

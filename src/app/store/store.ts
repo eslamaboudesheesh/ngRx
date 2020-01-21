@@ -1,10 +1,11 @@
 import { Action, ActionReducerMap } from '@ngrx/store';
 import { Counter, counterReducer } from './reducers/counter.reducer';
-import { TodoReducer, ToDo } from './reducers/todos.reducer';
+import { TodoReducer, ToDo, UsersReducer, users } from './reducers/todos.reducer';
 
 export interface StoreInterface {
     counter: Counter,
-    todos:ToDo[]
+    todos:ToDo[],
+    users: users[]
 }
 
 
@@ -17,5 +18,6 @@ export interface customerAction {
 // if i have multi reducer
 export const redusers:ActionReducerMap<StoreInterface> = {
     counter:counterReducer,
-    todos : TodoReducer
+    todos : TodoReducer,
+    users: UsersReducer
 }

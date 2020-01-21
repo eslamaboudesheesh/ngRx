@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
-import { LOAD, SuccessActions, FaildActions } from "../actions/todo.action";
+import { LOAD, SuccessActions, FaildActions, LOADUsers, SuccessUsersActions, FailedUsersActions } from "../actions/todo.action";
 import { mergeMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 @Injectable()
@@ -22,4 +22,18 @@ export class TodosEffect {
       )
     )
   );
+
+  useres$= createEffect(() =>
+  this.action.pipe(
+    ofType(LOADUsers),
+    // finction retirn observable 
+    mergeMap(() =>
+    // used pipe to change from obsevable of object to obsevabel of action 
+      this.http.get("https://jsonplaceholder.typicode.com/users").pipe(
+        map(data => new SuccessUsersActions(data)),
+        catchError(error => of(new FailedUsersActions(error)))
+      )
+    )
+  )
+);
 }
